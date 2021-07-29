@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {FC, useCallback} from 'react';
 import {
   ActivityIndicator,
   FlatList,
@@ -43,8 +43,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const MovieList = () => {
+const MovieList: FC = () => {
   const {movies, loading, sortMode, sort} = useFetchMovies();
+  let banan: number  = 5
 
   const renderItem = useCallback(({index, item}) => {
     if (!item) {
@@ -82,7 +83,7 @@ const MovieList = () => {
         style={styles.listContainer}
         data={movies}
         renderItem={renderItem}
-        keyExtractor={(_, index) => index}
+        keyExtractor={(_, index) => index.toString()}
       />
       <Button title={`Sort: ${sortMode}`} onPress={sort} />
     </View>

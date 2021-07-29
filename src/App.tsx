@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
 import MovieList from './components';
 
@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const App = () => {
+const App: FC = () => {
   return (
     <SafeAreaView style={styles.container}>
       <MovieList />

@@ -1,9 +1,18 @@
 import {useState, useEffect} from 'react';
 import {baseUrl} from '../constants';
 
+type Movie = {
+  title: string;
+  episode_number: string;
+  main_characters: Array<string>;
+  description: string;
+  hero_image: string;
+  poster: string;
+}
+
 const useFetchMovies = () => {
-  const [movies, setMovies] = useState(null);
-  const [sortAsc, setSortAsc] = useState(true);
+  const [movies, setMovies] = useState<Array<Movie>| null>(null);
+  const [sortAsc, setSortAsc] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -16,7 +25,7 @@ const useFetchMovies = () => {
 
   const sort = () => {
     const newSortAsc = !sortAsc;
-    const sortFn = (a, b) => {
+    const sortFn = (a: Movie, b: Movie) => {
       if (!a || !b) {
         return 0;
       }
