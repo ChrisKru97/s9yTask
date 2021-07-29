@@ -27,11 +27,17 @@ const useFetchMovies = () => {
       }
       return 0 - diff;
     };
-    setMovies(movies.sort(sortFn));
+    const newMovies = [...movies].sort(sortFn);
+    setMovies(newMovies);
     setSortAsc(newSortAsc);
   };
 
-  return {movies, loading: !movies, sort, sortMode: sortAsc ? 'asc' : 'desc'};
+  return {
+    movies,
+    loading: !movies,
+    sort,
+    sortMode: sortAsc ? 'asc' : 'desc',
+  };
 };
 
 export default useFetchMovies;
